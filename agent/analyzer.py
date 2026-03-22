@@ -1,8 +1,8 @@
 def analyze_log(llm, log):
     prompt = f"""
-You are an expert Site Reliability Engineer.
+You are an expert SRE.
 
-Analyze the log and give:
+Analyze:
 1. Root Cause
 2. Impact
 3. Fix
