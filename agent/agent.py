@@ -10,16 +10,19 @@ def llm(prompt):
     return response["message"]["content"]
 
 def decide_and_act(log, analysis):
-    if "OOMKilled" in log or "memory" in log:
-        print("⚡ Action: Restarting due to memory issue")
+    analysis_lower = analysis.lower()
+    log_lower = log.lower()
+
+    if "oom" in log_lower or "memory" in analysis_lower:
+        print("⚡ AI Decision: Memory issue detected")
         restart_deployment("user-service")
 
-    elif "CrashLoopBackOff" in log:
-        print("⚡ Action: Restarting crashing service")
+    elif "crashloopbackoff" in log_lower or "crash" in analysis_lower:
+        print("⚡ AI Decision: Crash detected")
         restart_deployment("payment-service")
 
-    elif "database" in log.lower():
-        print("⚡ Action: Investigate DB issue")
+    elif "database" in analysis_lower:
+        print("⚡ AI Decision: Database issue detected")
 
     else:
         print("✅ No action needed")
