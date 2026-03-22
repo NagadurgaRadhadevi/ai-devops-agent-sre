@@ -1,6 +1,7 @@
 from agent.analyzer import analyze_log
 from actions.k8s_actions import restart_deployment
 import ollama
+import os
 
 def llm(prompt):
     response = ollama.chat(
@@ -8,6 +9,7 @@ def llm(prompt):
         messages=[{"role": "user", "content": prompt}]
     )
     return response["message"]["content"]
+
 
 def decide_and_act(log, analysis):
     log_lower = log.lower()
@@ -26,21 +28,43 @@ def decide_and_act(log, analysis):
 
     else:
         print("✅ No action needed")
-        
+
+
 def run():
     print("🚀 AI DevOps Agent Running...\n")
 
-    with open("logs/sample_logs.txt") as f:
+    log_file = "logs/sample_logs.txt"
+
+    # ✅ Check if file exists
+    if not os.path.exists(log_file):
+        print("❌ Log file not found")
+        return
+
+    with open(log_file) as f:
         logs = f.readlines()
 
     for log in logs:
-        print(f"\n📌 Log: {log.strip()}")
 
-        analysis = analyze_log(llm, log)
+        # ✅ Filter only useful logs (real SRE behavior)
+        if "ERROR" not in log and "WARNING" not in log:
+            continue
 
-        print("🤖 AI Analysis:\n", analysis)
+        print("\n==============================")
+        print(f"📌 Log: {log.strip()}")
 
+        try:
+            analysis = analyze_log(llm, log)
+        except Exception as e:
+            print("❌ AI Analysis failed:", e)
+            continue
+
+        print("\n🤖 AI Analysis:\n", analysis)
+
+        print("\n⚡ Action:")
         decide_and_act(log, analysis)
+
+        print("==============================")
+
 
 if __name__ == "__main__":
     run()
