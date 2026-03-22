@@ -1,24 +1,22 @@
-# 🚀 AI DevOps Incident Auto-Responder (Agentic SRE)
+# AI DevOps Agent 🚀
 
-An AI-powered DevOps agent that analyzes production logs, identifies root causes, and suggests remediation actions.
+An AI-powered DevOps agent that analyzes production logs using LLM (Ollama) and suggests or triggers remediation actions.
 
-## 🧠 Features
-- Log analysis using LLM (Ollama)
+## Features
+- Log analysis using AI
 - Root cause detection
-- Suggested fixes
-- Ready for automation
+- Automated remediation (Kubernetes)
+- Modular architecture
 
-## ⚙️ Tech Stack
-Python, Ollama, Kubernetes
+## Tech Stack
+- Python
+- Ollama (LLM)
+- Kubernetes (kubectl)
+- DevOps Automation
 
-## 🚀 How to Run
-pip install -r requirements.txt  
-ollama serve  
-ollama pull llama3  
-python agent/agent.py  
+## How it works
+Log → AI Analysis → Decision → Action
 
-## 💡 Use Case
-Reduce MTTR and automate incident response
-
-## 👩‍💻 Author
-Radha Godavarthi
+## Run
+```bash
+python -m agent.agent

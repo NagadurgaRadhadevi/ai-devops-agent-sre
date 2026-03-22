@@ -1,13 +1,13 @@
-def analyze_log(agent, log):
+def analyze_log(llm, log):
     prompt = f"""
-You are an expert Site Reliability Engineer (SRE).
+You are an expert Site Reliability Engineer.
 
-Analyze the following log and provide:
+Analyze the log and give:
 1. Root Cause
 2. Impact
-3. Suggested Fix
+3. Fix
 
 Log:
 {log}
 """
-    return agent(prompt)
+    return llm(prompt)

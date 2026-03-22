@@ -24,7 +24,6 @@ def decide_and_act(log, analysis):
     else:
         print("✅ No action needed")
 
-
 def run():
     print("🚀 AI DevOps Agent Running...\n")
 
