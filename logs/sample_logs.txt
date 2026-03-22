@@ -1,3 +1,55 @@
-ERROR: Pod nginx-xyz CrashLoopBackOff
-Reason: OOMKilled
-CPU: 95%, Memory: 98%
+2026-03-22 10:01:12 INFO Starting service: user-service
+2026-03-22 10:01:15 INFO Connected to database successfully
+
+2026-03-22 10:02:10 ERROR Pod user-service-abc123 OOMKilled due to memory spike
+2026-03-22 10:02:11 WARNING Restarting container user-service
+
+2026-03-22 10:03:45 ERROR Database connection timeout after 30s
+2026-03-22 10:03:45 ERROR Failed to fetch user data
+
+2026-03-22 10:04:10 INFO Auto-scaling triggered: increasing replicas from 2 to 5
+
+2026-03-22 10:05:22 ERROR API latency high: /login endpoint response time 5.6s
+2026-03-22 10:05:23 WARNING Possible bottleneck detected in auth-service
+
+2026-03-22 10:06:01 ERROR CrashLoopBackOff detected for pod payment-service-xyz456
+2026-03-22 10:06:02 INFO Attempting restart...
+
+2026-03-22 10:07:18 ERROR Redis connection refused
+2026-03-22 10:07:19 ERROR Caching layer unavailable
+
+2026-03-22 10:08:30 WARNING CPU usage high: 92% on node ip-10-0-1-23
+2026-03-22 10:08:31 INFO Scaling node group
+
+2026-03-22 10:09:55 ERROR Disk pressure detected on node ip-10-0-2-45
+2026-03-22 10:09:56 WARNING Evicting pods due to disk pressure
+
+2026-03-22 10:10:20 ERROR Service unavailable: payment gateway timeout
+2026-03-22 10:10:21 ERROR Retry failed after 3 attempts
+
+2026-03-22 10:11:40 INFO Deployment rollout started for auth-service
+2026-03-22 10:11:50 ERROR Deployment failed due to readiness probe failure
+
+2026-03-22 10:12:30 ERROR Kafka broker not reachable
+2026-03-22 10:12:31 ERROR Event processing delayed
+
+2026-03-22 10:13:10 WARNING High memory usage detected: 88%
+2026-03-22 10:13:11 INFO Garbage collection triggered
+
+2026-03-22 10:14:45 ERROR HTTP 500 on /orders API
+2026-03-22 10:14:46 ERROR Downstream service failure
+
+2026-03-22 10:15:30 INFO System health degraded
+2026-03-22 10:15:31 ALERT Incident triggered: Sev-2
+
+2026-03-22 10:16:50 ERROR Pod inventory-service failed liveness probe
+2026-03-22 10:16:51 INFO Restarting pod inventory-service
+
+2026-03-22 10:17:30 ERROR TLS handshake failure with external API
+2026-03-22 10:17:31 WARNING SSL certificate might be expired
+
+2026-03-22 10:18:45 ERROR Rate limit exceeded for external API
+2026-03-22 10:18:46 WARNING Throttling requests
+
+2026-03-22 10:19:20 INFO Recovery in progress
+2026-03-22 10:20:00 INFO System stabilized
