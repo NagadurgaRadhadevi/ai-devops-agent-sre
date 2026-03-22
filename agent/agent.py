@@ -10,10 +10,10 @@ def llm(prompt):
     return response["message"]["content"]
 
 def decide_and_act(log, analysis):
-    analysis_lower = analysis.lower()
     log_lower = log.lower()
+    analysis_lower = analysis.lower()
 
-    if "oom" in log_lower or "memory" in analysis_lower:
+    if "oomkilled" in log_lower or "memory" in analysis_lower:
         print("⚡ AI Decision: Memory issue detected")
         restart_deployment("user-service")
 
@@ -26,7 +26,7 @@ def decide_and_act(log, analysis):
 
     else:
         print("✅ No action needed")
-
+        
 def run():
     print("🚀 AI DevOps Agent Running...\n")
 
