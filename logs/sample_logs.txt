@@ -1,0 +1,3 @@
+ERROR: Pod nginx-xyz CrashLoopBackOff
+Reason: OOMKilled
+CPU: 95%, Memory: 98%
